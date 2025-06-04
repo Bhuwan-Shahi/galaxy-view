@@ -68,7 +68,7 @@ export default function NebulaEffect({ rotation }: NebulaEffectProps) {
   }, [])
 
   // Custom shader material for nebula particles
-  const nebulaMaterial = useMemo(() => {
+  const nebulaMaterial = useMemo<THREE.ShaderMaterial>(() => {
     return new THREE.ShaderMaterial({
       uniforms: {
         time: { value: 0 },
@@ -140,7 +140,6 @@ export default function NebulaEffect({ rotation }: NebulaEffectProps) {
   useFrame((state) => {
     if (nebulaRef.current) {
       nebulaRef.current.rotation.y += rotation * 0.1
-      // @ts-ignore
       nebulaMaterial.uniforms.time.value = state.clock.elapsedTime
     }
   })

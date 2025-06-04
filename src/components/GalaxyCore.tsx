@@ -114,7 +114,7 @@ export default function GalaxyCore({ rotation, onSelect }: GalaxyCoreProps) {
     }
 
     if (blackHoleRef.current) {
-      // @ts-ignore
+      //@ts-expect-error: This property exists at runtime but TypeScript can't detect it
       blackHoleRef.current.material.uniforms.time.value = state.clock.elapsedTime
       blackHoleRef.current.rotation.z += 0.02
     }
